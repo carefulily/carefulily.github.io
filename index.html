@@ -1,173 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>carefulily — some poems</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,600..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --terracotta: #df6549;
-    --terracotta-deep: #c85639;
-    --maroon: #45061a;
-    --cream: #f6e7c8;
-    --cream-light: #fff6c2;
-    --stripe: #b23a2e;
-    --shadow: rgba(69,6,26,0.28);
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>carefulily — some poems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,600..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --terracotta: #df6549;
+      --terracotta-deep: #c85639;
+      --maroon: #45061a;
+      --cream: #f6e7c8;
+      --cream-light: #fff6c2;
+      --stripe: #b23a2e;
+      --shadow: rgba(69,6,26,0.28);
+    }
 
-  *{ box-sizing: border-box; }
+    *{ box-sizing: border-box; }
 
-  html{ scroll-behavior: smooth; }
+    html{ scroll-behavior: smooth; }
 
-  body{
-    margin:0;
-    background: var(--terracotta);
-    font-family: 'Inter', sans-serif;
-    color: var(--maroon);
-    -webkit-font-smoothing: antialiased;
-  }
+    body{
+      margin:0;
+      background: var(--terracotta);
+      font-family: 'Inter', sans-serif;
+      color: var(--maroon);
+      -webkit-font-smoothing: antialiased;
+    }
 
-  a{ color: inherit; }
+    a{ color: inherit; }
 
-  /* ---------- header ---------- */
+    /* ---------- header ---------- */
 
-  header{
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    padding: 2.2rem clamp(1.25rem, 4vw, 3.5rem) 0;
-  }
-
-  .logo{
-    display:flex;
-    align-items:center;
-  }
-
-  .logo img{
-    height: clamp(72px, 9vw, 110px);
-    width:auto;
-    display:block;
-  }
-
-  .discord-pill{
-    position: relative;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding: 0.85rem 1.9rem;
-    background: var(--cream-light);
-    color: var(--maroon);
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0.01em;
-    text-decoration:none;
-    border-radius: 999px;
-    box-shadow: 0 6px 0 0 var(--stripe), 0 10px 18px var(--shadow);
-    transform: rotate(-3deg);
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-    white-space:nowrap;
-  }
-
-  .discord-pill:hover{
-    transform: rotate(-3deg) translateY(-3px);
-    box-shadow: 0 9px 0 0 var(--stripe), 0 16px 22px var(--shadow);
-  }
-
-  .discord-pill:active{
-    transform: rotate(-3deg) translateY(1px);
-    box-shadow: 0 3px 0 0 var(--stripe), 0 6px 10px var(--shadow);
-  }
-
-  /* ---------- headline ---------- */
-
-  .hero{
-    padding: clamp(2rem, 6vw, 4.5rem) clamp(1.25rem, 4vw, 3.5rem) clamp(2.5rem, 5vw, 3.5rem);
-  }
-
-  .hero h1{
-    font-family: 'Fraunces', serif;
-    font-weight: 900;
-    font-style: italic;
-    font-optical-sizing: auto;
-    font-size: clamp(2.75rem, 7.5vw, 5.5rem);
-    line-height: 0.95;
-    margin: 0;
-    color: var(--maroon);
-    letter-spacing: -0.01em;
-  }
-
-  /* ---------- poem grid ---------- */
-
-  main{
-    padding: 0 clamp(1.25rem, 4vw, 3.5rem) clamp(3rem, 6vw, 5rem);
-  }
-
-  .poem-grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: clamp(1.25rem, 2.5vw, 2rem);
-    align-items:start;
-  }
-
-  .poem-card{
-    display:block;
-    border-radius: 14px;
-    overflow:hidden;
-    box-shadow: 0 14px 30px var(--shadow);
-    background: var(--cream);
-    line-height:0;
-    transform: rotate(0deg);
-    transition: transform 0.22s ease, box-shadow 0.22s ease;
-    text-decoration:none;
-  }
-
-  .poem-card:nth-child(1){ transform: rotate(-1.2deg); }
-  .poem-card:nth-child(2){ transform: rotate(0.6deg); }
-  .poem-card:nth-child(3){ transform: rotate(-0.4deg); }
-
-  .poem-card:hover{
-    transform: translateY(-6px) rotate(0deg);
-    box-shadow: 0 22px 40px var(--shadow);
-  }
-
-  .poem-card img{
-    width:100%;
-    height:auto;
-    display:block;
-  }
-
-  /* ---------- footer ---------- */
-
-  footer{
-    padding: 0 clamp(1.25rem, 4vw, 3.5rem) 2.5rem;
-    color: var(--cream);
-    font-size: 0.85rem;
-    opacity: 0.75;
-  }
-
-  @media (max-width: 560px){
     header{
-      flex-direction: row;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      padding: 2.2rem clamp(1.25rem, 4vw, 3.5rem) 0;
+    }
+
+    .logo{
+      display:flex;
       align-items:center;
     }
-    .discord-pill{
-      padding: 0.65rem 1.35rem;
-      font-size: 0.9rem;
+
+    .logo img{
+      height: clamp(72px, 9vw, 110px);
+      width:auto;
+      display:block;
     }
-  }
 
-  @media (prefers-reduced-motion: reduce){
-    .discord-pill, .poem-card{ transition:none; }
-  }
+    .discord-pill-wrap{
+      position: relative;
+      display:inline-block;
+      transform: rotate(-3deg);
+    }
 
-  a:focus-visible, .poem-card:focus-visible{
-    outline: 3px solid var(--maroon);
-    outline-offset: 3px;
-  }
-</style>
+    .discord-pill-wrap::before{
+      content:"";
+      position:absolute;
+      inset: 5px 0 -5px 0;
+      background: var(--stripe);
+      border-radius: 999px;
+      z-index: 0;
+    }
+
+    .discord-pill{
+      position: relative;
+      z-index: 1;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 0.85rem 1.9rem;
+      background: var(--cream-light);
+      color: var(--maroon);
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+      text-decoration:none;
+      border-radius: 999px;
+      box-shadow: 0 10px 18px var(--shadow);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      white-space:nowrap;
+    }
+
+    .discord-pill-wrap:hover .discord-pill{
+      transform: translateY(-4px);
+      box-shadow: 0 16px 22px var(--shadow);
+    }
+
+    .discord-pill-wrap:active .discord-pill{
+      transform: translateY(1px);
+      box-shadow: 0 6px 10px var(--shadow);
+    }
+
+    /* ---------- headline ---------- */
+
+    .hero{
+      padding: clamp(2rem, 6vw, 4.5rem) clamp(1.25rem, 4vw, 3.5rem) clamp(2.5rem, 5vw, 3.5rem);
+    }
+
+    .hero h1{
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-style: italic;
+      font-optical-sizing: auto;
+      font-size: clamp(2.75rem, 7.5vw, 5.5rem);
+      line-height: 0.95;
+      margin: 0;
+      color: var(--maroon);
+      letter-spacing: -0.01em;
+    }
+
+    /* ---------- poem grid ---------- */
+
+    main{
+      padding: 0 clamp(1.25rem, 4vw, 3.5rem) clamp(3rem, 6vw, 5rem);
+    }
+
+    .poem-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(1.25rem, 2.5vw, 2rem);
+      align-items:start;
+    }
+
+    .poem-card{
+      display:block;
+      border-radius: 14px;
+      overflow:hidden;
+      box-shadow: 0 14px 30px var(--shadow);
+      background: var(--cream);
+      line-height:0;
+      transform: rotate(0deg);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      text-decoration:none;
+    }
+
+    .poem-card:nth-child(1){ transform: rotate(-1.2deg); }
+    .poem-card:nth-child(2){ transform: rotate(0.6deg); }
+    .poem-card:nth-child(3){ transform: rotate(-0.4deg); }
+
+    .poem-card:hover{
+      transform: translateY(-6px) rotate(0deg);
+      box-shadow: 0 22px 40px var(--shadow);
+    }
+
+    .poem-card img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    /* ---------- footer ---------- */
+
+    footer{
+      padding: 0 clamp(1.25rem, 4vw, 3.5rem) 2.5rem;
+      color: var(--cream);
+      font-size: 0.85rem;
+      opacity: 0.75;
+    }
+
+    @media (max-width: 560px){
+      header{
+        flex-direction: row;
+        align-items:center;
+      }
+      .discord-pill{
+        padding: 0.65rem 1.35rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .discord-pill, .poem-card, .discord-pill-wrap{ transition:none; }
+    }
+
+    a:focus-visible, .poem-card:focus-visible{
+      outline: 3px solid var(--maroon);
+      outline-offset: 3px;
+    }
+  </style>
 </head>
 <body>
 
@@ -175,7 +190,9 @@
   <a class="logo" href="/" aria-label="carefulily home">
     <img src="assets/logo.png" alt="carefulily">
   </a>
-  <a class="discord-pill" href="#" target="_blank" rel="noopener">discord</a>
+  <span class="discord-pill-wrap">
+    <a class="discord-pill" href="https://discord.com/users/1242303372112039987" target="_blank" rel="noopener">discord</a>
+  </span>
 </header>
 
 <section class="hero">
@@ -197,7 +214,7 @@
 </main>
 
 <footer>
-  carefulily
+  &copy; carefulily 2026
 </footer>
 
 </body>
