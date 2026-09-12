@@ -118,15 +118,18 @@
 
     .spotlight{
       padding: 0 clamp(1.25rem, 4vw, 3.5rem) clamp(2.5rem, 5vw, 3.5rem);
+      position: relative;
     }
 
     .spotlight-label{
+      position: relative;
+      z-index: 2;
       display:inline-flex;
       align-items:center;
       gap: 0.5rem;
       font-family: 'Inter', sans-serif;
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 1rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--cream-light);
@@ -142,7 +145,68 @@
       background: var(--cream-light);
     }
 
+    .spotlight-glow{
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      width: min(720px, 92vw);
+      height: calc(100% + 80px);
+      transform: translateX(-50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .spotlight-glow span{
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(38px);
+      opacity: 0.55;
+    }
+
+    .spotlight-glow .glow-a{
+      width: 60%;
+      height: 55%;
+      top: 4%;
+      left: 2%;
+      background: #b9d1a8;
+    }
+
+    .spotlight-glow .glow-b{
+      width: 55%;
+      height: 50%;
+      top: 20%;
+      right: 0%;
+      background: #bcd7e6;
+    }
+
+    .spotlight-glow .glow-c{
+      width: 45%;
+      height: 40%;
+      bottom: 4%;
+      left: 20%;
+      background: var(--cream-light);
+      opacity: 0.4;
+    }
+
+    .spotlight-doodle{
+      position: absolute;
+      z-index: 1;
+      color: var(--cream-light);
+      pointer-events: none;
+    }
+
+    .spotlight-doodle.doodle-flower{ top: 6%; left: 6%; width: 46px; height: 46px; color: var(--maroon); opacity: 0.9; }
+    .spotlight-doodle.doodle-star{ top: 10%; right: 8%; width: 30px; height: 30px; }
+    .spotlight-doodle.doodle-circle{ bottom: 10%; left: 4%; width: 34px; height: 34px; border: 2px dashed var(--cream-light); border-radius: 50%; opacity: 0.8; }
+    .spotlight-doodle.doodle-star-2{ bottom: 6%; right: 6%; width: 22px; height: 22px; color: var(--maroon); opacity: 0.75; }
+
+    @media (max-width: 700px){
+      .spotlight-doodle{ display:none; }
+    }
+
     .spotlight-card{
+      position: relative;
+      z-index: 2;
       display:block;
       max-width: 620px;
       margin: 0 auto;
@@ -339,11 +403,32 @@
 
 <section class="spotlight">
   <p class="spotlight-label">New</p>
+
+  <div class="spotlight-glow" aria-hidden="true">
+    <span class="glow-a"></span>
+    <span class="glow-b"></span>
+    <span class="glow-c"></span>
+  </div>
+
+  <svg class="spotlight-doodle doodle-flower" viewBox="0 0 100 100" aria-hidden="true">
+    <path fill="currentColor" d="M50 30c8-14 26-14 30 0 4 14-8 24-22 26 10 8 12 22 2 30-10 8-22-2-22-16 0 14-12 24-22 16-10-8-8-22 2-30-14-2-26-12-22-26 4-14 22-14 30 0z"/>
+  </svg>
+
+  <svg class="spotlight-doodle doodle-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+    <path d="M12 2l2.2 6.8H21l-5.6 4.1 2.2 6.8L12 15.6l-5.6 4.1 2.2-6.8L3 8.8h6.8z"/>
+  </svg>
+
+  <div class="spotlight-doodle doodle-circle" aria-hidden="true"></div>
+
+  <svg class="spotlight-doodle doodle-star-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+    <path d="M12 2l2.2 6.8H21l-5.6 4.1 2.2 6.8L12 15.6l-5.6 4.1 2.2-6.8L3 8.8h6.8z"/>
+  </svg>
+
   <div class="spotlight-card">
-    <button class="poem-image" data-full="assets/poem-his.png" aria-label="Enlarge poem: his">
-      <img src="assets/poem-his.png" alt="Poem: his">
+    <button class="poem-image" data-full="assets/poem-his.png" aria-label="Enlarge poem: His">
+      <img src="assets/poem-his.png" alt="Poem: His">
     </button>
-    <p class="spotlight-title">his</p>
+    <p class="spotlight-title">His</p>
   </div>
 </section>
 
@@ -369,8 +454,8 @@
     </div>
 
     <div class="poem-card">
-      <button class="poem-image" data-full="assets/poem-his.png" aria-label="Enlarge poem: his">
-        <img src="assets/poem-his.png" alt="Poem: his">
+      <button class="poem-image" data-full="assets/poem-his.png" aria-label="Enlarge poem: His">
+        <img src="assets/poem-his.png" alt="Poem: His">
       </button>
     </div>
 
