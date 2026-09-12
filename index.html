@@ -1,188 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>carefulily — some poems</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,600..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --terracotta: #df6549;
-      --terracotta-deep: #c85639;
-      --maroon: #45061a;
-      --cream: #f6e7c8;
-      --cream-light: #fff6c2;
-      --stripe: #b23a2e;
-      --shadow: rgba(69,6,26,0.28);
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>carefulily — some poems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,600..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --terracotta: #df6549;
+    --terracotta-deep: #c85639;
+    --maroon: #45061a;
+    --cream: #f6e7c8;
+    --cream-light: #fff6c2;
+    --stripe: #b23a2e;
+    --shadow: rgba(69,6,26,0.28);
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--terracotta);
+    font-family: 'Inter', sans-serif;
+    color: var(--maroon);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+
+  /* ---------- header ---------- */
+
+  header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    padding: 2.2rem clamp(1.25rem, 4vw, 3.5rem) 0;
+  }
+
+  .logo{
+    display:flex;
+    align-items:center;
+  }
+
+  .logo img{
+    height: clamp(72px, 9vw, 110px);
+    width:auto;
+    display:block;
+  }
+
+  .discord-pill-wrap{
+    position: relative;
+    display:inline-block;
+    transform: rotate(-3deg);
+  }
+
+  .discord-pill-wrap::before{
+    content:"";
+    position:absolute;
+    inset: 5px 0 -5px 0;
+    background: var(--stripe);
+    border-radius: 999px;
+    z-index: 0;
+  }
+
+  .discord-pill{
+    position: relative;
+    z-index: 1;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding: 0.85rem 1.9rem;
+    background: var(--cream-light);
+    color: var(--maroon);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    text-decoration:none;
+    border-radius: 999px;
+    box-shadow: 0 10px 18px var(--shadow);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    white-space:nowrap;
+  }
+
+  .discord-pill-wrap:hover .discord-pill{
+    transform: translateY(-4px);
+    box-shadow: 0 16px 22px var(--shadow);
+  }
+
+  .discord-pill-wrap:active .discord-pill{
+    transform: translateY(1px);
+    box-shadow: 0 6px 10px var(--shadow);
+  }
+
+  /* ---------- headline ---------- */
+
+  .hero{
+    padding: clamp(2rem, 6vw, 4.5rem) clamp(1.25rem, 4vw, 3.5rem) clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .hero h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-style: italic;
+    font-optical-sizing: auto;
+    font-size: clamp(2.75rem, 7.5vw, 5.5rem);
+    line-height: 0.95;
+    margin: 0;
+    color: var(--maroon);
+    letter-spacing: -0.01em;
+  }
+
+  /* ---------- spotlight ---------- */
+
+  .spotlight{
+    padding: 0 clamp(1.25rem, 4vw, 3.5rem) clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .spotlight-label{
+    display:inline-flex;
+    align-items:center;
+    gap: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cream-light);
+    opacity: 0.85;
+    margin: 0 0 1rem 0.2rem;
+  }
+
+  .spotlight-label::before{
+    content:"";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cream-light);
+  }
+
+  .spotlight-card{
+    display:block;
+    max-width: 620px;
+    margin: 0 auto;
+    border-radius: 18px;
+    overflow:hidden;
+    background: var(--cream);
+    box-shadow: 0 26px 55px var(--shadow);
+    transform: rotate(-0.6deg);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .spotlight-card:hover{
+    transform: translateY(-6px) rotate(0deg);
+    box-shadow: 0 34px 65px var(--shadow);
+  }
+
+  .spotlight-card .poem-image{
+    cursor: zoom-in;
+  }
+
+  .spotlight-title{
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.15rem;
+    margin: 0;
+    padding: 0.9rem 1.2rem;
+    color: var(--maroon);
+    background: var(--cream);
+  }
+
+  /* ---------- poem grid ---------- */
+
+  main{
+    padding: 0 clamp(1.25rem, 4vw, 3.5rem) clamp(3rem, 6vw, 5rem);
+  }
+
+  .poem-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    align-items:start;
+  }
+
+  .poem-card{
+    display:block;
+    border-radius: 14px;
+    overflow:hidden;
+    box-shadow: 0 14px 30px var(--shadow);
+    background: var(--cream);
+    transform: rotate(0deg);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+  }
+
+  .poem-card:nth-child(1){ transform: rotate(-1.2deg); }
+  .poem-card:nth-child(2){ transform: rotate(0.6deg); }
+  .poem-card:nth-child(3){ transform: rotate(-0.4deg); }
+  .poem-card:nth-child(4){ transform: rotate(1deg); }
+
+  .poem-card:hover{
+    transform: translateY(-6px) rotate(0deg);
+    box-shadow: 0 22px 40px var(--shadow);
+  }
+
+  .poem-image{
+    display:block;
+    line-height:0;
+    border:none;
+    padding:0;
+    background:none;
+    width:100%;
+    cursor: zoom-in;
+  }
+
+  .poem-card img{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
+  /* ---------- lightbox ---------- */
+
+  .lightbox{
+    position: fixed;
+    inset: 0;
+    background: rgba(24, 3, 9, 0.82);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: clamp(1rem, 5vw, 3rem);
+    opacity:0;
+    visibility:hidden;
+    transition: opacity 0.22s ease;
+    z-index: 100;
+  }
+
+  .lightbox.is-open{
+    opacity:1;
+    visibility:visible;
+  }
+
+  .lightbox-inner{
+    position:relative;
+    max-width: min(90vw, 900px);
+    max-height: 90vh;
+    transform: scale(0.94);
+    transition: transform 0.22s ease;
+  }
+
+  .lightbox.is-open .lightbox-inner{
+    transform: scale(1);
+  }
+
+  .lightbox img{
+    display:block;
+    max-width: 100%;
+    max-height: 90vh;
+    width:auto;
+    height:auto;
+    border-radius: 10px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+  }
+
+  .lightbox-close{
+    position:absolute;
+    top: -18px;
+    right: -18px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border:none;
+    cursor:pointer;
+    background: var(--cream-light);
+    color: var(--maroon);
+    font-size: 1.3rem;
+    line-height:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+  }
+
+  @media (max-width: 560px){
+    .lightbox-close{
+      top: -14px;
+      right: 0;
     }
+  }
 
-    *{ box-sizing: border-box; }
+  /* ---------- footer ---------- */
 
-    html{ scroll-behavior: smooth; }
+  footer{
+    padding: 0 clamp(1.25rem, 4vw, 3.5rem) 2.5rem;
+    color: var(--cream);
+    font-size: 0.85rem;
+    opacity: 0.75;
+  }
 
-    body{
-      margin:0;
-      background: var(--terracotta);
-      font-family: 'Inter', sans-serif;
-      color: var(--maroon);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a{ color: inherit; }
-
-    /* ---------- header ---------- */
-
+  @media (max-width: 560px){
     header{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      padding: 2.2rem clamp(1.25rem, 4vw, 3.5rem) 0;
-    }
-
-    .logo{
-      display:flex;
+      flex-direction: row;
       align-items:center;
     }
-
-    .logo img{
-      height: clamp(72px, 9vw, 110px);
-      width:auto;
-      display:block;
-    }
-
-    .discord-pill-wrap{
-      position: relative;
-      display:inline-block;
-      transform: rotate(-3deg);
-    }
-
-    .discord-pill-wrap::before{
-      content:"";
-      position:absolute;
-      inset: 5px 0 -5px 0;
-      background: var(--stripe);
-      border-radius: 999px;
-      z-index: 0;
-    }
-
     .discord-pill{
-      position: relative;
-      z-index: 1;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 0.85rem 1.9rem;
-      background: var(--cream-light);
-      color: var(--maroon);
-      font-weight: 600;
-      font-size: 1rem;
-      letter-spacing: 0.01em;
-      text-decoration:none;
-      border-radius: 999px;
-      box-shadow: 0 10px 18px var(--shadow);
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-      white-space:nowrap;
+      padding: 0.65rem 1.35rem;
+      font-size: 0.9rem;
     }
+  }
 
-    .discord-pill-wrap:hover .discord-pill{
-      transform: translateY(-4px);
-      box-shadow: 0 16px 22px var(--shadow);
-    }
+  @media (prefers-reduced-motion: reduce){
+    .discord-pill, .poem-card, .discord-pill-wrap, .spotlight-card{ transition:none; }
+  }
 
-    .discord-pill-wrap:active .discord-pill{
-      transform: translateY(1px);
-      box-shadow: 0 6px 10px var(--shadow);
-    }
-
-    /* ---------- headline ---------- */
-
-    .hero{
-      padding: clamp(2rem, 6vw, 4.5rem) clamp(1.25rem, 4vw, 3.5rem) clamp(2.5rem, 5vw, 3.5rem);
-    }
-
-    .hero h1{
-      font-family: 'Fraunces', serif;
-      font-weight: 900;
-      font-style: italic;
-      font-optical-sizing: auto;
-      font-size: clamp(2.75rem, 7.5vw, 5.5rem);
-      line-height: 0.95;
-      margin: 0;
-      color: var(--maroon);
-      letter-spacing: -0.01em;
-    }
-
-    /* ---------- poem grid ---------- */
-
-    main{
-      padding: 0 clamp(1.25rem, 4vw, 3.5rem) clamp(3rem, 6vw, 5rem);
-    }
-
-    .poem-grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: clamp(1.25rem, 2.5vw, 2rem);
-      align-items:start;
-    }
-
-    .poem-card{
-      display:block;
-      border-radius: 14px;
-      overflow:hidden;
-      box-shadow: 0 14px 30px var(--shadow);
-      background: var(--cream);
-      line-height:0;
-      transform: rotate(0deg);
-      transition: transform 0.22s ease, box-shadow 0.22s ease;
-      text-decoration:none;
-    }
-
-    .poem-card:nth-child(1){ transform: rotate(-1.2deg); }
-    .poem-card:nth-child(2){ transform: rotate(0.6deg); }
-    .poem-card:nth-child(3){ transform: rotate(-0.4deg); }
-
-    .poem-card:hover{
-      transform: translateY(-6px) rotate(0deg);
-      box-shadow: 0 22px 40px var(--shadow);
-    }
-
-    .poem-card img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
-
-    /* ---------- footer ---------- */
-
-    footer{
-      padding: 0 clamp(1.25rem, 4vw, 3.5rem) 2.5rem;
-      color: var(--cream);
-      font-size: 0.85rem;
-      opacity: 0.75;
-    }
-
-    @media (max-width: 560px){
-      header{
-        flex-direction: row;
-        align-items:center;
-      }
-      .discord-pill{
-        padding: 0.65rem 1.35rem;
-        font-size: 0.9rem;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      .discord-pill, .poem-card, .discord-pill-wrap{ transition:none; }
-    }
-
-    a:focus-visible, .poem-card:focus-visible{
-      outline: 3px solid var(--maroon);
-      outline-offset: 3px;
-    }
-  </style>
+  a:focus-visible, .poem-card:focus-visible, .poem-image:focus-visible{
+    outline: 3px solid var(--maroon);
+    outline-offset: 3px;
+  }
+</style>
 </head>
 <body>
 
@@ -199,23 +337,98 @@
   <h1>some poems&hellip;</h1>
 </section>
 
+<section class="spotlight">
+  <p class="spotlight-label">Spotlight</p>
+  <div class="spotlight-card">
+    <button class="poem-image" data-full="assets/poem-his.png" aria-label="Enlarge poem: His">
+      <img src="assets/poem-his.png" alt="Poem: His">
+    </button>
+    <p class="spotlight-title">His</p>
+  </div>
+</section>
+
 <main>
   <div class="poem-grid">
-    <a class="poem-card" href="assets/poem-hitnrun.png" target="_blank" rel="noopener">
-      <img src="assets/poem-hitnrun.png" alt="Poem: Hit n Run!">
-    </a>
-    <a class="poem-card" href="assets/poem-belli.png" target="_blank" rel="noopener">
-      <img src="assets/poem-belli.png" alt="Poem: Belli">
-    </a>
-    <a class="poem-card" href="assets/poem-trees.png" target="_blank" rel="noopener">
-      <img src="assets/poem-trees.png" alt="Poem: Trees">
-    </a>
+
+    <div class="poem-card">
+      <button class="poem-image" data-full="assets/poem-hitnrun.png" aria-label="Enlarge poem: Hit n Run!">
+        <img src="assets/poem-hitnrun.png" alt="Poem: Hit n Run!">
+      </button>
+    </div>
+
+    <div class="poem-card">
+      <button class="poem-image" data-full="assets/poem-belli.png" aria-label="Enlarge poem: Belli">
+        <img src="assets/poem-belli.png" alt="Poem: Belli">
+      </button>
+    </div>
+
+    <div class="poem-card">
+      <button class="poem-image" data-full="assets/poem-trees.png" aria-label="Enlarge poem: Trees">
+        <img src="assets/poem-trees.png" alt="Poem: Trees">
+      </button>
+    </div>
+
+    <div class="poem-card">
+      <button class="poem-image" data-full="assets/poem-his.png" aria-label="Enlarge poem: His">
+        <img src="assets/poem-his.png" alt="Poem: His">
+      </button>
+    </div>
+
   </div>
 </main>
 
 <footer>
   &copy; carefulily 2026
 </footer>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close enlarged poem">&times;</button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+</div>
+
+<script>
+  (function(){
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightboxImg');
+    var closeBtn = document.getElementById('lightboxClose');
+    var lastFocused = null;
+
+    function openLightbox(src, alt){
+      lastFocused = document.activeElement;
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+
+    function closeLightbox(){
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+      if (lastFocused) lastFocused.focus();
+    }
+
+    document.querySelectorAll('.poem-image').forEach(function(trigger){
+      trigger.addEventListener('click', function(){
+        var img = trigger.querySelector('img');
+        openLightbox(trigger.dataset.full, img ? img.alt : '');
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', function(e){
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+    });
+  })();
+</script>
 
 </body>
 </html>
